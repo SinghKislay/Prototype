@@ -22,6 +22,7 @@ class StoryChild extends Component{
 
     storyClick = () =>{
         this.props.blur();
+        
         this.setState({
             styleName:"storyCont1",
             howerStyle:"storyUI1",
@@ -43,6 +44,14 @@ class StoryChild extends Component{
     componentDidMount = () => {
         for(let i=0;i<4;i++){
             this.getPics("https://dog.ceo/api/breeds/image/random");
+        }
+        
+    }
+
+    componentDidUpdate = () => {
+        var stl = document.getElementsByClassName("storyCont")
+        for (let i of stl){
+            console.log(i)
         }
     }
 
@@ -77,7 +86,7 @@ class StoryChild extends Component{
         return (
         <div className={this.state.styleName} onClick={this.storyClick}>
         <div style={{position:"relative"}}><div style={{position:"absolute",width:"100%"}}><div style={{position:"relative",display:"flex"}}><div style={{zIndex:"1000"}} className={this.state.left} onClick={this.leftClick}></div> <div style={{zIndex:"1000"}} className={this.state.right} onClick={this.rightClick}></div></div></div></div>
-        <div style={{position:"relative"}}>{img}</div>
+        <div style={{position:"static"}}>{img}</div>
         <div style={{position:"relative"}}><div style={{position:"absolute",width:"100%"}}><div style={{position:"relative",display:"flex",justifyContent:"space-around"}}>{storybar}</div></div>
         </div></div>)
     }

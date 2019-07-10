@@ -7,14 +7,17 @@ class StoryParent extends Component{
     constructor(props){
         super(props);
     this.state = {
-        divStyle:""
+        divStyle:"",
+        Style:{overflowX:"scroll",overflowY:"hidden",whiteSpace:"nowrap",position: "relative"},
     }
     this.blurBackground = this.blurBackground.bind(this);
     }
 
     blurBackground(){
             this.setState({
-                divStyle:"blur"
+                divStyle:"blur",
+                Style:{position: "relative"}
+
             })
     }
 
@@ -27,7 +30,10 @@ class StoryParent extends Component{
         return(
             <>
             <div className={this.state.divStyle}></div>
-            <div className="container">
+            <div style={this.state.Style} className="container">
+                <StoryChild blur={this.blurBackground}/>
+                <StoryChild blur={this.blurBackground}/>
+                <StoryChild blur={this.blurBackground}/>
                 <StoryChild blur={this.blurBackground}/>
                 <StoryChild blur={this.blurBackground}/>
                 <StoryChild blur={this.blurBackground}/>
